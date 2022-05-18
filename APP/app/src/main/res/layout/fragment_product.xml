@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        tools:context=".ProductFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:id="@+id/layoutMainFragment"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        <EditText
+                android:id="@+id/etQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/quantity"
+                android:layout_margin="8dp"
+                tools:ignore="LabelFor"
+                app:layout_constraintEnd_toStartOf="@+id/btnAddProduct"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+                android:id="@+id/tvProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_name"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tvProductID"
+                app:layout_constraintTop_toBottomOf="@+id/pbDownloadProgress" />
+
+        <TextView
+                android:id="@+id/tvProductID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_id"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/tvProductName"
+                app:layout_constraintEnd_toEndOf="@+id/tvProductName"
+                app:layout_constraintTop_toBottomOf="@+id/pbDownloadProgress"
+                app:layout_constraintBottom_toTopOf="@+id/btnGetData"
+                app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+                android:id="@+id/tvProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_price"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvProductID"
+                app:layout_constraintStart_toStartOf="@+id/tvProductID"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductID"
+                app:layout_constraintBottom_toTopOf="@+id/btnGetData" />
+
+        <Button
+                android:id="@+id/btnAddProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/add_product"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toEndOf="@+id/etQuantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/pbDownloadProgress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/ivImageCanvas"
+                android:layout_marginTop="12dp" />
+
+        <ImageView
+                android:id="@+id/ivImageCanvas"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:contentDescription="@string/image_description"
+                android:scaleType="fitCenter"
+                tools:srcCompat="@tools:sample/avatars"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+                android:id="@+id/btnGetData"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/get_data"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toEndOf="@+id/btnGetImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btnAddProduct" />
+
+        <Button
+                android:id="@+id/btnGetImage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/get_image"
+                android:layout_margin="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/btnGetData"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnGetData"
+                app:layout_constraintBottom_toBottomOf="@+id/btnGetData" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+            android:id="@+id/progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/connection_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                tools:text="@string/state_connecting" />
+
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+    </LinearLayout>
+
+    <include
+            android:id="@+id/info_not_supported"
+            layout="@layout/info_not_supported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="gone" />
+
+    <include
+            android:id="@+id/info_timeout"
+            layout="@layout/info_timeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>

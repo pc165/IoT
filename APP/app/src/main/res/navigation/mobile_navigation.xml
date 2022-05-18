@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/navigation_product">
+
+    <fragment
+            android:id="@+id/navigation_basket"
+            android:name="com.android.iotproject.BasketFragment"
+            android:label="@string/basket"
+            tools:layout="@layout/fragment_basket" />
+
+    <fragment
+            android:id="@+id/navigation_product"
+            android:name="com.android.iotproject.ProductFragment"
+            android:label="@string/product"
+            tools:layout="@layout/fragment_product" />
+</navigation>
